@@ -16,6 +16,21 @@ The "model" is a fixed-coefficient logistic risk score over `sex`
 (0 = female, 1 = male), `age` (years), and `marker_value` (a numeric
 biomarker) — illustrative only, not a real risk model.
 
+## Via modelscloud
+
+```r
+library(modelscloud)
+
+# Public testing key — fine to use for trying out the examples collection
+connect_to_model("examples/toymodel1",
+                 access_key = "23b7bab3-118e-4516-b53c-91bca8e0082d")
+
+sample <- get_sample_input()
+result <- model_run(sample)
+```
+
+Prediction models are always called synchronously.
+
 ## Local use
 
 ```r
@@ -28,15 +43,3 @@ result[, c("sex", "age", "marker_value", "risk")]
 #> 2   1  62          2.4 0.27289
 #> 3   1  48          0.7 0.04565
 ```
-
-## Via modelscloud
-
-```r
-library(modelscloud)
-connect_to_model("example/toymodel1", access_key = "YOUR_API_KEY")
-
-sample <- get_sample_input()
-result <- model_run(sample)
-```
-
-Prediction models are always called synchronously.
