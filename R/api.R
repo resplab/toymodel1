@@ -29,6 +29,10 @@
 #'   (0 = female, 1 = male), `age` (years), and `marker_value` (a numeric
 #'   biomarker). Multiple rows are predicted at once.
 #'
+#' As a side effect, `model_run()` draws a barplot of the predicted risks. On
+#' the ModelsCloud server this plot is captured automatically by OpenCPU and can
+#' be retrieved from the client with `modelscloud::get_plots()`.
+#'
 #' @return The input as a data frame with an added `risk` column (predicted
 #'   probability in `[0, 1]`).
 #' @export
@@ -58,6 +62,21 @@ model_run <- function(model_input = NULL) {
     b[["marker_value"]] * df$marker_value
 
   df$risk <- 1 / (1 + exp(-lp))
+
+  # Barplot of predicted risks (one bar per case). On the ModelsCloud server
+  # OpenCPU captures this automatically; retrieve it from the client with
+  # modelscloud::get_plots(). Drawn unconditionally so it is always available.
+  barplot(
+    df$risk,
+    names.arg = seq_len(nrow(df)),
+    ylim      = c(0, 1),
+    main      = "Predicted risk by case",
+    xlab      = "Case",
+    ylab      = "Predicted risk",
+    col       = "steelblue",
+    border    = "white"
+  )
+
   df
 }
 

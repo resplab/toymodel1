@@ -9,7 +9,11 @@ model_run(model_input = NULL)
 \arguments{
 \item{model_input}{Named list or data frame with columns \code{sex}
 (0 = female, 1 = male), \code{age} (years), and \code{marker_value} (a numeric
-biomarker). Multiple rows are predicted at once.}
+biomarker). Multiple rows are predicted at once.
+
+As a side effect, \code{model_run()} draws a barplot of the predicted risks. On
+the ModelsCloud server this plot is captured automatically by OpenCPU and can
+be retrieved from the client with \code{modelscloud::get_plots()}.}
 }
 \value{
 The input as a data frame with an added \code{risk} column (predicted

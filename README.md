@@ -19,6 +19,10 @@ It implements the standard prediction-model API:
 | `model_run(model_input)` | Predict for a table of patients (synchronous) |
 | `get_sample_input()` | Return an example input dataset |
 
+`model_run()` also draws a **barplot of the predicted risks** as a side effect.
+On the server OpenCPU captures this plot automatically, so it can be retrieved
+with `modelscloud::get_plots()`.
+
 ## Via modelscloud
 
 ```r
@@ -30,6 +34,10 @@ connect_to_model("examples/toymodel1",
 
 sample <- get_sample_input()
 result <- model_run(sample)
+
+# Retrieve the barplot the model produced
+get_plots(result)            # list available plots
+get_plots(result, id = 1)    # fetch and display the barplot
 ```
 
 Prediction models are always called synchronously.
