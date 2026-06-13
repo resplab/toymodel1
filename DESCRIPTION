@@ -1,0 +1,15 @@
+Package: toymodel1
+Title: Toy Example Prediction Model for ModelsCloud
+Version: 0.1.0
+Authors@R:
+    person("Mohsen", "Sadatsafavi", email = "mohsen.sadatsafavi@ubc.ca",
+           role = c("aut", "cre"))
+Description: A minimal, dependency-free example of a prediction model packaged
+    for the ModelsCloud platform. Exposes the standard prediction API:
+    model_run() and get_sample_input(). Dot-free copy of toy.pred.model,
+    intended as a copy-paste template for building new synchronous
+    prediction-model packages.
+License: GPL-3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+Config/roxygen2/version: 8.0.0
