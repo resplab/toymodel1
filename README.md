@@ -37,7 +37,8 @@ result <- model_run(sample)
 
 # Retrieve the barplot the model produced
 get_plots(result)            # list available plots
-get_plots(result, id = 1)    # fetch and display the barplot
+img <- get_plots(result, id = 1)   # retrieve the barplot
+plot(img)                          # display it
 ```
 
 Prediction models are always called synchronously.
