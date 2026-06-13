@@ -1,9 +1,16 @@
 # toymodel1
 
-A minimal, dependency-free **example prediction model** for the
-[ModelsCloud](https://github.com/resplab/modelscloud) platform. A dot-free copy
-of `toy.pred.model` (Pexa currently has trouble routing model names that
-contain dots).
+A minimal, dependency-free **toy prediction model** for the
+[ModelsCloud](https://github.com/resplab/modelscloud) platform. It predicts a
+risk from three predictors using a fixed-coefficient logistic score —
+illustrative only, not a real risk model.
+
+**Predictors**
+
+- `sex` — patient sex, coded `0` = female, `1` = male.
+- `age` — age in years.
+- `marker_value` — a generic numeric biomarker; higher values raise the
+  predicted risk.
 
 It implements the standard prediction-model API:
 
@@ -11,10 +18,6 @@ It implements the standard prediction-model API:
 |---|---|
 | `model_run(model_input)` | Predict for a table of patients (synchronous) |
 | `get_sample_input()` | Return an example input dataset |
-
-The "model" is a fixed-coefficient logistic risk score over `sex`
-(0 = female, 1 = male), `age` (years), and `marker_value` (a numeric
-biomarker) — illustrative only, not a real risk model.
 
 ## Via modelscloud
 
