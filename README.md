@@ -41,17 +41,5 @@ img <- get_plots(result, id = 1)   # retrieve the barplot
 plot(img)                          # display it
 ```
 
-Prediction models are always called synchronously.
+Prediction models are typically called synchronously in this way.
 
-## Local use
-
-```r
-# devtools::load_all() or install, then:
-sample <- get_sample_input()
-result <- model_run(sample)
-result[, c("sex", "age", "marker_value", "risk")]
-#>   sex age marker_value    risk
-#> 1   0  55          1.2 0.05787
-#> 2   1  62          2.4 0.27289
-#> 3   1  48          0.7 0.04565
-```
